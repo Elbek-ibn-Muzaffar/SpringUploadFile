@@ -1,0 +1,14 @@
+ublic class JwtConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
+
+    public JwtConfigurer(JwtTokenProvider jwtTokenProvider) {
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
+
+    public void configurer(HttpSecurity httpSecurity)
+    {
+        JwtTokenFilter jwtTokenFilter=new JwtTokenFilter(jwtTokenProvider);
+        httpSecurity.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}
