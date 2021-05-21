@@ -6,6 +6,7 @@ ublic class JwtConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilte
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+    @Override
     public void configurer(HttpSecurity httpSecurity)
     {
         JwtTokenFilter jwtTokenFilter=new JwtTokenFilter(jwtTokenProvider);
